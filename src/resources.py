@@ -14,6 +14,7 @@ class Character:
 
     def take_damage(self, dmg):
         actual_damage = dmg - self.armor
+        if actual_damage < 0: actual_damage = 0 
         if (self.health - actual_damage) < 0:
             self.health = 0
         else:
@@ -24,6 +25,11 @@ class Character:
 
     def get_health(self):
         return self.health
+
+    def get_name(self):
+        return self.name
+
+    
 
 class Goblin:
 
@@ -38,6 +44,7 @@ class Goblin:
 
     def take_damage(self, dmg):
         actual_damage = dmg - self.armor
+        if actual_damage < 0: actual_damage = 0 
         if (self.health - actual_damage) < 0:
             self.health = 0
         else:
@@ -50,6 +57,8 @@ class Goblin:
     def get_health(self):
         return self.health
 
+    def get_name(self):
+        return f"Goblin #{self.id}"
 
 # functions
 def hi():
