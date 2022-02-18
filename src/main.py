@@ -1,4 +1,4 @@
-from resources import Character, Goblin
+from resources import Character, Goblin, save_character, load_characters
 import random
 
 def fight(fighter : Character, enemies : list):
@@ -20,7 +20,8 @@ def new_fight(players: list, enemies: list):
     random.shuffle(participants)
 
     for char in participants: #Check if goblin or character
-        if char in participants:
+        target=""
+        if char in players:
             target = random.choice(enemies)
         else:
             target = random.choice(players)
@@ -36,6 +37,7 @@ def new_fight(players: list, enemies: list):
         else:
             print(F"{target.get_name()} was attacked by {char.get_name()}.")
             print(F"{target.get_name()} has {target.get_health()} healthpoints left")
+        if len(enemies) == 0 or len(players) == 0: break
 
         
 
@@ -64,6 +66,14 @@ def main():
         print("The players won!")
     elif len(players) == 0:
         print("The Goblins won!")
+
+    #save_character(emy)
+
+    players = load_characters()
+    for player in players:
+        print(player)
+
+    
  
 if __name__ == "__main__":
     main()
